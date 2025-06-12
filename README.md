@@ -1,12 +1,8 @@
 # React + Vite
+# OLX Clone Pages:
+a. Login Page – Basic authentication with AuthContext ✅
+b. Home Page – Show product listings by category✅
+c. Post Ad Page – Form to submit new product ad (protected)✅
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+d. Product Detail Page – View full product info ☑️
+e. My Ads Page – List of user's ads with edit/delete options ☑️
