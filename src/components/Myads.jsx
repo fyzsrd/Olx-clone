@@ -7,6 +7,7 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth, fireStore } from '../utils/Firebase';
 import { collection, deleteDoc, doc, Firestore, getDocs, query, where } from 'firebase/firestore';
 import EditAd from './Editad';
+import Footer from './Footer';
 
 function Myads() {
   const [user] = useAuthState(auth);
@@ -53,6 +54,7 @@ function Myads() {
 
 
   return (
+    <>
     <div>
       <Navbar toggleModal={toggleModal} toggleModalSell={toggleModalSell} />
       <Login toggleModal={toggleModal} status={openModal} />
@@ -76,7 +78,7 @@ function Myads() {
         ) : (
           <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 pt-5">
             {myAds.map((ad) => (
-              <div key={ad.id} className="border rounded p-4 relative shadow-md">
+              <div key={ad.id} className="border border-gray-300 rounded p-4 relative shadow-md">
                 <img src={ad.imageUrl} alt={ad.title} className="w-full h-40 object-cover rounded mb-2" />
                 <p className="font-bold text-lg">{ad.title}</p>
                 <p className="text-sm text-gray-600">{ad.category}</p>
@@ -101,6 +103,8 @@ function Myads() {
 
       </div>
     </div>
+    <Footer />
+    </>
   )
 }
 

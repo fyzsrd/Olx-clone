@@ -6,21 +6,22 @@ import Card from '../components/Card';
 import { useItemContext } from '../components/Context/Item';
 import { fetchFromFireStore } from '../utils/Firebase';
 import Flyout from '../components/Flyout';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
+import Footer from '../components/Footer';
 
 
 function Home() {
   const [openModal, setOpenModal] = useState(false);
   const [openModalSell, setOpenModalSell] = useState(false)
   const [selectedCategory, setSelectedCategory] = useState('All')
-  
-  const navigate=useNavigate()
-  const location =useLocation()
 
-  const handleCategorySelect = (category) => {
-    //  navigate('/', { state: { selectedCategory: category } });
-    setSelectedCategory(category);
-  };
+ 
+  const location = useLocation()
+
+  // const handleCategorySelect = (category) => {
+  //   //  navigate('/', { state: { selectedCategory: category } });
+  //   setSelectedCategory(category);
+  // };
 
   const toggleModalSell = () => {
     setOpenModalSell(!openModalSell)
@@ -42,43 +43,46 @@ function Home() {
 
     getItems()
   }, []);
-  
-useEffect(() => {
-  if (location.state?.selectedCategory) {
-    setSelectedCategory(location.state.selectedCategory);
-  } else {
-    setSelectedCategory('All'); // fallback default
-  }
-}, [location.state]);
+
+  useEffect(() => {
+    if (location.state?.selectedCategory) {
+      setSelectedCategory(location.state.selectedCategory);
+    } else {
+      setSelectedCategory('All'); // fallback default
+    }
+  }, [location.state]);
 
   useEffect(() => {
     console.log('updated items: ', itemCntx.items)
   }, [itemCntx.items])
 
-const filteredItems = !itemCntx.items
-  ? []
-  : selectedCategory === 'All'
-  ? itemCntx.items
-  : itemCntx.items.filter(item =>
-      item.category?.toLowerCase() === selectedCategory.toLowerCase()
-    );
+  const filteredItems = !itemCntx.items
+    ? []
+    : selectedCategory === 'All'
+      ? itemCntx.items
+      : itemCntx.items.filter(item =>
+        item.category?.toLowerCase() === selectedCategory.toLowerCase()
+      );
 
   return (
     <>
 
-     
+
       <div>
-        
-        <Navbar  toggleModal={toggleModal} toggleModalSell={toggleModalSell} />
+
+        <Navbar toggleModal={toggleModal} toggleModalSell={toggleModalSell} />
 
         <Login toggleModal={toggleModal} status={openModal} />
         <Sell setItems={(itemCntx).setItems} toggleModalSell={toggleModalSell} status={openModalSell} />
 
+        
+        
+          <Card items={filteredItems || []} />
 
-         <Card items={filteredItems || []} />
+          <Footer />
 
       </div>
-      
+
 
     </>
   )

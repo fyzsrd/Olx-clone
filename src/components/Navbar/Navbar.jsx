@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import logo from '../../assets/symbol.png'
+import olx_logo_2025 from '../../assets/olx_logo_2025.svg'
 import search from '../../assets/search1.svg'
 import arrow from '../../assets/arrow-down.svg'
 import searchWt from '../../assets/search.svg'
@@ -16,7 +16,7 @@ import { onAuthStateChanged } from 'firebase/auth'
 
 
 
-function Navbar({ toggleModal, toggleModalSell, onCategorySelect }) {
+function Navbar({ toggleModal, toggleModalSell }) {
   const [user] = useAuthState(auth)
   const navigate = useNavigate();
   const location=useLocation()
@@ -39,7 +39,7 @@ function Navbar({ toggleModal, toggleModalSell, onCategorySelect }) {
   return (
     <div>
       <nav className=' z-50 w-full p-2 pl-3 pr-3 shadow-md bg-slate-100 border-b-4 border-solid border-b-white'>
-        <Link to={'/'} > <img className='w-12' src={logo} alt="logo" /></Link>
+        <Link to={'/'} > <img className='w-12' src={olx_logo_2025} alt="logo" /></Link>
 
 
         <div className='relative location-search  ml-5'>
