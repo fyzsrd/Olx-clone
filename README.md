@@ -1,4 +1,3 @@
-# React + Vite
 # OLX Clone Pages:
 a. Login Page – Basic authentication with AuthContext ✅
 b. Home Page – Show product listings by category✅
